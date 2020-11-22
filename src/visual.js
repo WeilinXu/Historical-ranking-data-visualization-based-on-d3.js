@@ -53,7 +53,7 @@ function draw(data) {
         name_list.push(e.name);
       }
     });
-  var baseTime = 3000;
+  var baseTime = 3000;	// original value: 3000
 
   // 如果用户提供的color_palette 长度不为0 则使用它，否则使用d3.schemeCatetory10
   var user_pallete = config.color_palette;
@@ -94,6 +94,8 @@ function draw(data) {
   var allow_up = config.allow_up;
   var always_up = config.always_up;
   var interval_time = config.interval_time;
+  var duration_time = config.duration_time;
+  var delay_time = config.delay_time;
   var text_y = config.text_y;
   var itemLabel = config.itemLabel;
   var typeLabel = config.typeLabel;
@@ -103,7 +105,7 @@ function draw(data) {
   if (config.use_type_info) {
     var use_type_info = config.use_type_info;
   } else if (divide_by != "name") {
-    var use_type_info = true;
+    var use_type_info = false; // true;
   } else {
     var use_type_info = false;
   }
@@ -324,7 +326,7 @@ function draw(data) {
 
     // 右1文字
     g.insert("text")
-      .attr("class", "growth")
+      .attr("class", "growth_right")
       .attr("x", text_x)
       .attr("y", text_y)
       .text(typeLabel);
@@ -433,7 +435,7 @@ function draw(data) {
         }
         lastname = d.name;
         if (d.name.length > 24) return d.name.slice(0, 23) + "...";
-        return d.name;
+        return ""; //d.name
       });
       if (use_counter == true) {
         // 榜首持续时间更新
@@ -484,8 +486,8 @@ function draw(data) {
       .attr("y", 50)
       .style("fill", d => getColor(d))
       .transition("a")
-      .delay(500 * interval_time)
-      .duration(2490 * interval_time)
+      .delay(delay_time * interval_time)
+      .duration(duration_time * interval_time)
       .attr("y", 0)
       .attr("width", d => xScale(xValue(d)))
       .attr("fill-opacity", 1);
@@ -500,8 +502,8 @@ function draw(data) {
         .attr("fill-opacity", 0)
         .style("fill", d => getColor(d))
         .transition("2")
-        .delay(500 * interval_time)
-        .duration(2490 * interval_time)
+        .delay(delay_time * interval_time)
+        .duration(duration_time * interval_time)
         .attr("fill-opacity", 1)
         .attr("y", 0)
         .attr("class", function (d) {
@@ -548,8 +550,8 @@ function draw(data) {
         )
         .attr("stroke-width", "0px")
         .transition("a")
-        .delay(500 * interval_time)
-        .duration(2490 * interval_time)
+        .delay(delay_time * interval_time)
+        .duration(duration_time * interval_time)
         // .attr("stroke", d => getColor(d))
         // .attr("paint-order", "stroke")
         .attr("x", -16)
@@ -577,8 +579,8 @@ function draw(data) {
       .attr("stroke-width", "0px")
       .attr("fill-opacity", 0)
       .transition()
-      .delay(500 * interval_time)
-      .duration(2490 * interval_time)
+      .delay(delay_time * interval_time)
+      .duration(duration_time * interval_time)
       .text(function (d) {
         if (use_type_info) {
           return d[divide_by] + "-" + d.name;

@@ -116,6 +116,13 @@ input {
     font-family: "Fira Code", "Source Han Sans CN"
 }
 
+.growth_right {
+    fill: #5C5C5C;
+    font-weight: bold;
+    font-size: 25pt;
+    font-family: "Fira Code", "Source Han Sans CN"
+}
+
 /* MIKU色 */
 .L {
     fill: #39C5BB;

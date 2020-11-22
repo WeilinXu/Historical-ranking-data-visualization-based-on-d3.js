@@ -6,7 +6,7 @@
   // Encoding is not recommended to be modified.
   // Instead, it is recommended to copy the contents of the CSV file produced by yourself to example.csv.
   // The encoding format of example.csv is supported by all languages.
-  encoding: "UTF-8",
+  encoding: "GBK", // "UTF-8"
 
   // 每个时间节点最多显示的条目数。
   max_number: 20,
@@ -33,13 +33,17 @@
   divide_by: "type",
 
   // 颜色根据什么字段区分？
-  divide_color_by: "name",
+  divide_color_by: "type",
 
   // 字段的值与其对应的颜色值
   // 也可在src/colors.js 中设置
   color: {
-    Chinese: "#1177CC",
-    Japanese: "#667788"
+    "哈": "#EA0437", "沈": "#87D300",
+	"京": "#FFD100", "太": "#4F1F91", "呼": "#A24CC8",
+	"郑": "#D71671", "武": "#FF7200", "西": "#009EDB",
+	"济": "#78C7EB", "上": "#BC87E6", "南": "#7C2230",
+	"广": "#007B63", "宁": "#F293D1", "成": "#7F7800", "昆": "#BBA786",
+	"兰": "#32D4CB", "乌": "#B67770", "青": "#D6A461"
   },
 
   // 指定一组颜色值，用于自定义所有bar 的配色方案。如果为空则使用默认配置。
@@ -57,10 +61,10 @@
 
   // 附加信息内容。
   // left label
-  itemLabel: "左侧文字",
+  itemLabel: "中国火车站车次数排名",
 
   // right label
-  typeLabel: "右侧文字",
+  typeLabel: "by: T318_forever",
 
   // 榜首项目信息的水平位置 。
   // Top item information horizontal location
@@ -68,7 +72,8 @@
 
   // 时间点间隔时间。
   interval_time: 1,
-
+  delay_time: 500,
+  duration_time: 2490,
   // 上方文字水平高度。
   text_y: -50,
 
@@ -80,7 +85,7 @@
   // 长度小于display_barInfo的bar将不显示barInfo。
   // Hide barInfo if bar is shorter than barInfo
   display_barInfo: 0,
-
+  use_type_info: false,
   // 使用计数器
   // 注意！使用计时器和使用类型目前不能兼容，即不能同时开启！
   // 计数器会出现在右上角，记录着当前榜首的持续时间。
