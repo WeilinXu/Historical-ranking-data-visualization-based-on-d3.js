@@ -144,7 +144,7 @@
   long: false,
 
   // 延迟多少个时间节点开始
-  wait: 0,
+  wait: 1,
 
   // 单独控制交换动画速度倍率
   update_rate: 1,

@@ -359,6 +359,7 @@ function draw(data) {
   var enter_from_now = true;
 
   function redraw() {
+	console.log("redraw.");
     if (currentData.length == 0) return;
     // yScale
     //     .domain(currentData.map(d => d.name).reverse())
@@ -845,9 +846,10 @@ function draw(data) {
     if (config.use_img) {
       barExit.select("circle").attr("fill-opacity", 0);
     }
-  }
+ }
 
   function change() {
+	console.log("change.");
     yScale
       .domain(currentData.map(d => d.name).reverse())
       .range([innerHeight, 0]);
@@ -880,10 +882,12 @@ function draw(data) {
   var update_rate = config.update_rate;
   var inter = setInterval(function next() {
     // 空过p回合
+	console.log("setInterval");
     while (p) {
       p -= 1;
       return;
     }
+	p = config.wait;
     currentdate = time[i];
     getCurrentData(time[i]);
     i++;
